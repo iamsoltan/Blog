@@ -6,6 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 export default function Card({ _id, title, author, excerpts, img, vote = 0 }) {
   const router = useRouter();
@@ -27,12 +29,33 @@ export default function Card({ _id, title, author, excerpts, img, vote = 0 }) {
         </Typography>
         <br />
         <Typography variant="p" color="black">
-          author : {author}
+          Author : {author}
+        </Typography>
+        <br />
+        <Typography variant="p" color="black">
+          votes : {vote}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => router.push(`/post/${_id}`)}>
+        <Button
+          size="small"
+          variant="outlined"
+          onClick={() => router.push(`/post/${_id}`)}
+        >
           Read More
+        </Button>
+        <Button size="small" 
+        
+        style={{ backgroundColor: "green" }}
+        variant="contained">
+          <ThumbUpOffAltIcon />
+        </Button>
+        <Button
+          size="small"
+          style={{ backgroundColor: "orange" }}
+          variant="contained"
+        >
+          <ThumbDownIcon />
         </Button>
       </CardActions>
     </MuiCard>
